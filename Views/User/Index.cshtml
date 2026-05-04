@@ -1,0 +1,48 @@
+@model IEnumerable<LeveInvestimentos.Models.User>
+
+@{
+    ViewData["Title"] = "Usuários";
+}
+
+<div class="uk-flex uk-flex-between uk-flex-middle uk-margin-bottom">
+    <h2>Usuários</h2>
+    @if (ViewBag.IsGestor == true)
+    {
+        <a href="/User/Create" class="uk-button uk-button-primary" style="background-color: #0b2e59;">Novo Usuário</a>
+    }
+</div>
+
+<div class="uk-card uk-card-default uk-card-body" style="border-radius: 10px;">
+    <table class="uk-table uk-table-divider uk-table-hover uk-table-middle">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome Completo</th>
+                <th>Email</th>
+                <th>Telefone Celular</th>
+                <th>Gestor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.NomeCompleto</td>
+                    <td>@user.Email</td>
+                    <td>@user.TelefoneCelular</td>
+                    <td>
+                        @if (user.IsGestor)
+                        {
+                            <span class="uk-label uk-label-success">Sim</span>
+                        }
+                        else
+                        {
+                            <span class="uk-label">Não</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

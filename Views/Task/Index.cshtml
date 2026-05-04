@@ -1,0 +1,61 @@
+@model IEnumerable<LeveInvestimentos.Models.TaskItem>
+
+@{
+    ViewData["Title"] = "Tarefas";
+}
+
+<div class="uk-flex uk-flex-between uk-flex-middle uk-margin-bottom">
+    <h2>Tarefas</h2>
+    @if (ViewBag.IsGestor == true)
+    {
+        <a href="/Task/Create" class="uk-button uk-button-primary" style="background-color: #0b2e59;">Nova Tarefa</a>
+    }
+</div>
+
+<div class="uk-card uk-card-default uk-card-body" style="border-radius: 10px;">
+    <table class="uk-table uk-table-divider uk-table-hover uk-table-middle">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Data Limite</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in Model)
+            {
+                <tr>
+                    <td>@task.Id</td>
+                    <td>@task.Titulo</td>
+                    <td>@task.Descricao</td>
+                    <td>@task.DataLimite.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (task.Status == "Concluido")
+                        {
+                            <span class="uk-label uk-label-success">Concluído</span>
+                        }
+                        else
+                        {
+                            <span class="uk-label uk-label-warning">Pendente</span>
+                        }
+                    </td>
+                    <td>
+                        @if (task.Status != "Concluido")
+                        {
+                            <a href="/Task/Concluir/@task.Id" class="uk-button uk-button-small uk-button-primary" style="background-color: #32d296;" uk-tooltip="Marcar como Concluído"><span uk-icon="check"></span></a>
+                        }
+                    </td>
+                </tr>
+            }
+            @if(!Model.Any())
+            {
+                <tr>
+                    <td colspan="6" class="uk-text-center uk-text-muted">Nenhuma tarefa encontrada.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

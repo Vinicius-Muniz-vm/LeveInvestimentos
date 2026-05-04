@@ -1,0 +1,55 @@
+@model LeveInvestimentos.Models.TaskItem
+
+@{
+    ViewData["Title"] = "Nova Tarefa";
+    var users = ViewBag.Users as IEnumerable<LeveInvestimentos.Models.User>;
+}
+
+<h2>Nova Tarefa</h2>
+
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m" style="border-radius: 10px; margin: 0 auto;">
+    <form method="post" action="/Task/Create" class="uk-form-stacked">
+        
+        <div class="uk-margin">
+            <label class="uk-form-label">Título da Tarefa</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="Titulo" type="text" required />
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label">Descrição Detalhada</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" name="Descricao" rows="4" placeholder="Descreva os detalhes da tarefa..."></textarea>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label">Data Limite</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="DataLimite" type="date" required />
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label">Atribuir a (Usuário)</label>
+            <div class="uk-form-controls">
+                <select class="uk-select" name="UsuarioId" required>
+                    <option value="">Selecione um usuário...</option>
+                    @if(users != null)
+                    {
+                        foreach(var u in users)
+                        {
+                            <option value="@u.Id">@u.NomeCompleto (@u.Email)</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="uk-margin-medium-top uk-text-right">
+            <a href="/Task/Index" class="uk-button uk-button-default">Cancelar</a>
+            <button type="submit" class="uk-button uk-button-primary" style="background-color: #0b2e59;">Salvar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Leve Investimentos</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #0b2e59 0%, #1c5b96 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="uk-card uk-card-default uk-card-body login-card uk-animation-fade">
+        <h3 class="uk-card-title uk-text-center uk-margin-medium-bottom" style="color: #0b2e59; font-weight: bold;">LeveInvestimentos</h3>
+        
+        @if (ViewBag.Error != null)
+        {
+            <div class="uk-alert-danger" uk-alert>
+                <a href class="uk-alert-close" uk-close></a>
+                <p>@ViewBag.Error</p>
+            </div>
+        }
+
+        <form method="post" action="/Auth/Login">
+            <div class="uk-margin">
+                <div class="uk-inline uk-width-1-1">
+                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                    <input class="uk-input uk-form-large" name="email" type="email" placeholder="Email" required />
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <div class="uk-inline uk-width-1-1">
+                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                    <input class="uk-input uk-form-large" name="senha" type="password" placeholder="Senha" required />
+                </div>
+            </div>
+
+            <div class="uk-margin-medium-top">
+                <button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1" style="background-color: #0b2e59; border-radius: 5px;">Entrar</button>
+            </div>
+            <div class="uk-margin-small-top uk-text-center">
+                <a href="/Auth/EsqueciSenha" class="uk-link-muted">Esqueci minha senha?</a>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>

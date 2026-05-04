@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="uk-text-center uk-margin-large-top">
+    <h1 class="uk-heading-small" style="color: #0b2e59;">Bem-vindo ao LeveInvestimentos</h1>
+    <p class="uk-text-lead uk-text-muted">Selecione uma das opções abaixo para gerenciar o sistema.</p>
+</div>
+
+<div class="uk-child-width-1-3@m uk-grid-match uk-margin-large-top" uk-grid>
+    <div>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-text-center" style="border-radius: 10px;">
+            <span uk-icon="icon: users; ratio: 3" style="color: #1c5b96;"></span>
+            <h3 class="uk-card-title uk-margin-top">Usuários</h3>
+            <p>Gerencie os usuários e gestores da plataforma.</p>
+            <a href="/User/Index" class="uk-button uk-button-text">Acessar <span uk-icon="icon: arrow-right"></span></a>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-text-center" style="border-radius: 10px;">
+            <span uk-icon="icon: check; ratio: 3" style="color: #1c5b96;"></span>
+            <h3 class="uk-card-title uk-margin-top">Tarefas</h3>
+            <p>Acompanhe e atribua novas tarefas.</p>
+            <a href="/Task/Index" class="uk-button uk-button-text">Acessar <span uk-icon="icon: arrow-right"></span></a>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-text-center" style="border-radius: 10px;">
+            <span uk-icon="icon: sign-out; ratio: 3" style="color: #f0506e;"></span>
+            <h3 class="uk-card-title uk-margin-top">Sair</h3>
+            <p>Encerrar sua sessão de forma segura.</p>
+            <a href="/Auth/Logout" class="uk-button uk-button-text" style="color: #f0506e;">Logout <span uk-icon="icon: arrow-right"></span></a>
+        </div>
+    </div>
+</div>

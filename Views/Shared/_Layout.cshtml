@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leve Investimentos</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .uk-navbar-container {
+            background: linear-gradient(to right, #0b2e59, #1c5b96);
+        }
+        .uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle {
+            color: white !important;
+        }
+        .uk-navbar-nav>li>a:hover {
+            color: #d1e8ff !important;
+        }
+        .app-container {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    @if (Context.Request.Path != "/Auth/Login" && Context.Request.Path != "/")
+    {
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo" href="/Home/Index" style="font-weight: bold;">LeveInvestimentos</a>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a href="/User/Index">Usuários</a></li>
+                    <li><a href="/Task/Index">Tarefas</a></li>
+                    <li><a href="/Auth/Logout">Sair</a></li>
+                </ul>
+            </div>
+        </nav>
+    }
+
+    <div class="uk-container app-container">
+        @RenderBody()
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>
